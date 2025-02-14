@@ -24,16 +24,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and tag Docker image
+      - name: Build, tag and push Docker image
         run: |
           ECR_REPO="864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app"
           IMAGE_TAG=$(date +%Y%m%d%H%M%S)
           docker build -t $ECR_REPO:$IMAGE_TAG .
           docker tag $ECR_REPO:$IMAGE_TAG $ECR_REPO:latest
-
-      - name: Push Docker image to ECR
-        run: |
-          ECR_REPO="864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app"
-          IMAGE_TAG=$(date +%Y%m%d%H%M%S)
           docker push $ECR_REPO:$IMAGE_TAG
           docker push $ECR_REPO:latest
