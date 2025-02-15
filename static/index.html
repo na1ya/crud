@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Data Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .data-box {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Data Website</h1>
+        
+        <div class="data-box">
+            <h2>Random Number</h2>
+            <p id="randomNumber"></p>
+        </div>
+
+        <div class="data-box">
+            <h2>Random Facts</h2>
+            <ul id="factsList">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Generate random number
+        document.getElementById('randomNumber').textContent = Math.floor(Math.random() * 1000);
+
+        // Random facts
+        const facts = [
+            "The first computer mouse was made of wood",
+            "The first computer virus was created in 1983",
+            "The first website is still online",
+            "The average person spends 6 hours per day using the internet",
+            "The first computer programmer was Ada Lovelace"
+        ];
+
+        const factsList = document.getElementById('factsList');
+        facts.forEach(fact => {
+            const li = document.createElement('li');
+            li.textContent = fact;
+            factsList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
