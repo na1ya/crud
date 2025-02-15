@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:20250215133820
+          image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:20250215151132
           ports:
             - containerPort: 5010
       imagePullSecrets:
