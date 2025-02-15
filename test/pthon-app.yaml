@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:latest
+          image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:$IMAGE_TAG
           ports:
             - containerPort: 5010
       imagePullSecrets:
@@ -26,9 +26,13 @@ metadata:
   name: python-app
 spec:
   selector:
-    app: python-app  # Matches the pod's metadata.name
+    app: python-app # Matches the pod's metadata.name
   ports:
     - protocol: TCP
-      port: 5010        # External port (clients connect here)
-      targetPort: 5010  # Port inside the container
+      port: 5010 # External port (clients connect here)
+      targetPort: 5010 # Port inside the container
   type: ClusterIP
+  template:
+    spec:
+      containers:
+        - image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:$IMAGE_TAG
