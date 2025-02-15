@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --global user.email "your-email@example.com"
           git config --global user.name "GitHub Actions"
-          git add test/pthon-app.yaml
+          git add test/python-app.yaml
           git commit -m "Update image tag in test/python-app-deployment.yaml"
           git push https://github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
         env:
