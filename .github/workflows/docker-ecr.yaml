@@ -39,7 +39,7 @@ jobs:
       - name: Update deployment.yaml with yq
         run: |
           FULL_IMAGE_TAG=$ECR_REPO:$IMAGE_TAG
-          yq eval '.spec.template.spec.containers[0].image = env($FULL_IMAGE_TAG)' -i test/python-app-deployment.yaml
+          yq eval '.spec.template.spec.containers[0].image = env(FULL_IMAGE_TAG)' -i test/python-app-deployment.yaml
 
       - name: Commit updated YAML
         run: |
