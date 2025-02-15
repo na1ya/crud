@@ -27,19 +27,20 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build, tag and push Docker image
+      - name: Build, tag and push to ECR
         run: |
           ECR_REPO="864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app"
           IMAGE_TAG=$(date +%Y%m%d%H%M%S)
+
           docker build -t $ECR_REPO:$IMAGE_TAG .
           docker tag $ECR_REPO:$IMAGE_TAG $ECR_REPO:latest
           docker push $ECR_REPO:$IMAGE_TAG
-          docker push $ECR_REPO:latest          
-          echo "FULL_IMAGE_TAG=$ECR_REPO:$IMAGE_TAG" >> $GITHUB_ENV
+          
+          echo "FULL_IMAGE_NAME=$ECR_REPO:$IMAGE_TAG" >> $GITHUB_ENV
 
-      - name: Update deployment.yaml with yq
+      - name: Update image version in Yaml files
         run: |
-          yq eval '.spec.template.spec.containers[0].image = env(FULL_IMAGE_TAG)' -i test/python-app-deployment.yaml
+          yq eval '.spec.template.spec.containers[0].image = env(FULL_IMAGE_NAME)' -i test/python-app-deployment.yaml
 
       - name: Commit updated YAML
         run: |
