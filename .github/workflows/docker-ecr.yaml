@@ -38,7 +38,7 @@ jobs:
 
       - name: Update deployment.yaml with yq
         run: |
-          yq eval '.[0].spec.template.spec.containers[0].image = "864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:'"$IMAGE_TAG"'"' -i test/python-app.yaml
+          yq eval '.[0].spec.template.spec.containers[0].image = "864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:'"$IMAGE_TAG"'"' -i test/pthon-app.yaml
 
       - name: Commit updated YAML
         run: |
