@@ -19,6 +19,12 @@ spec:
             - containerPort: 5010
       imagePullSecrets:
         - name: aws-ecr-secret
+0:
+  spec:
+    template:
+      spec:
+        containers:
+          - image: '864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:'
 ---
 apiVersion: v1
 kind: Service
@@ -32,3 +38,9 @@ spec:
       port: 5010 # External port (clients connect here)
       targetPort: 5010 # Port inside the container
   type: ClusterIP
+0:
+  spec:
+    template:
+      spec:
+        containers:
+          - image: '864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:'
