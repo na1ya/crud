@@ -15,7 +15,7 @@ spec:
       serviceAccountName: pod-creator
       containers:
         - name: python-app
-          image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:20250217222737
+          image: 864899851722.dkr.ecr.eu-west-2.amazonaws.com/private/python-app:20250224110919
           ports:
             - containerPort: 5010
       imagePullSecrets:
